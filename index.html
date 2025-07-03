@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibeコーディングで作れるランディングページサンプル集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0a0b1e;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><polygon fill="rgba(255,255,255,0.1)" points="0,0 1000,0 800,200 0,200"/></svg>') no-repeat center;
+            background-size: cover;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #a8edea);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+        
+        .main-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .course-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* メインコンテンツ */
+        main {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+        }
+        
+        .intro-section {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .intro-section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .intro-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* サンプルグリッド */
+        .samples-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #333;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .samples-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+            position: relative;
+            border: 1px solid #e9ecef;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+        
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .card-header {
+            padding: 40px 30px 20px;
+            text-align: center;
+        }
+        
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 0 30px 30px;
+        }
+        
+        .card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+        
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .feature-tag {
+            background: #f8f9fa;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .card-target {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* CTA セクション */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button.primary {
+            background: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+        
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .cta-button.primary:hover {
+            background: #ee5a52;
+            border-color: #ee5a52;
+        }
+        
+        /* フッター */
+        footer {
+            background: #0a0b1e;
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 20px;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a:hover {
+            color: #667eea;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #999;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .main-title {
+                font-size: 1.5rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="course-badge">🚀 Vibeコーディング講座</div>
+            <h1 class="logo">VIBE CODING</h1>
+            <h2 class="main-title">ランディングページサンプル集</h2>
+            <p class="subtitle">
+                30分で学べる実践的なランディングページ制作講座のサンプル集。<br>
+                様々な業種・用途に対応した10個のプロ仕様ページをご紹介します。
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- 紹介セクション -->
+            <section class="intro-section">
+                <h2>Vibeコーディングで実現できること</h2>
+                <p class="intro-text">
+                    Vibeコーディング講座では、HTML・CSS・JavaScriptを使用して、実際のビジネスで使える高品質なランディングページを30分で制作する方法を学べます。
+                    プログラミング初心者から上級者まで、実践的なスキルを身につけることができます。
+                </p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">サンプルページ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30分</div>
+                        <div class="stat-label">制作時間</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">レスポンシブ対応</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">即実践</div>
+                        <div class="stat-label">ビジネス活用</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- サンプル一覧 -->
+            <section class="samples-section">
+                <h2>サンプルページ一覧</h2>
+                <div class="grid">
+                    <a href="01_webwriter/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">✍️</span>
+                            <h3>副業Webライター紹介</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>これから副業を始めたい人向けのライター紹介ページ。実績がなくても魅力的に見せる構成とライティングテクニックを学べます。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">プロフィール</span>
+                                <span class="feature-tag">料金表</span>
+                                <span class="feature-tag">お問い合わせ</span>
+                            </div>
+                            <div class="card-target">副業初心者向け</div>
+                        </div>
+                    </a>
+                    
+                    <a href="02_freelance_designer/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🎨</span>
+                            <h3>デザイナーポートフォリオ</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>ポートフォリオを中心とした、既にスキルを持つデザイナー向けのプロフェッショナルページ。作品を魅力的に見せる技術を習得できます。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">ポートフォリオ</span>
+                                <span class="feature-tag">スキル紹介</span>
+                                <span class="feature-tag">実績表示</span>
+                            </div>
+                            <div class="card-target">フリーランス向け</div>
+                        </div>
+                    </a>
+                    
+                    <a href="03_online_instructor/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🎓</span>
+                            <h3>オンライン講師・セミナー</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>専門知識を活かした講座やセミナーの集客に特化したランディングページ。高いコンバージョン率を実現する設計を学習します。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">講座紹介</span>
+                                <span class="feature-tag">申し込みフォーム</span>
+                                <span class="feature-tag">実績アピール</span>
+                            </div>
+                            <div class="card-target">専門家向け</div>
+                        </div>
+                    </a>
+                    
+                    <a href="04_cleaning_service/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🧹</span>
+                            <h3>地域密着型清掃サービス</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>実務型サービス提供者向け。地域性と信頼感を重視したデザイン構成で、地元顧客からの信頼を獲得する方法を学べます。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">地域特化</span>
+                                <span class="feature-tag">信頼感演出</span>
+                                <span class="feature-tag">実例紹介</span>
+                            </div>
+                            <div class="card-target">地域サービス向け</div>
+                        </div>
+                    </a>
+                    
+                    <a href="05_personal_brand_consultant/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">💼</span>
+                            <h3>個人ブランドコンサルタント</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>豊富な経験と実績をアピールする、上級者向けのコンサルタントページ。権威性と専門性を効果的に伝える技術を習得します。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">権威性アピール</span>
+                                <span class="feature-tag">事例紹介</span>
+                                <span class="feature-tag">相談フォーム</span>
+                            </div>
+                            <div class="card-target">コンサルタント向け</div>
+                        </div>
+                    </a>
+                    
+                    <a href="06_handmade_artist/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🎭</span>
+                            <h3>ハンドメイド作家</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>クリエイター向けの商品紹介ページ。作品の魅力と作家の想いを伝える構成で、ファンづくりとブランディングを学習できます。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">作品ギャラリー</span>
+                                <span class="feature-tag">ストーリー</span>
+                                <span class="feature-tag">EC連携</span>
+                            </div>
+                            <div class="card-target">クリエイター向け</div>
+                        </div>
+                    </a>
+                    
+                    <a href="07_corporate_training/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🏢</span>
+                            <h3>企業向け研修サービス</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>法人営業に特化した、信頼感とプロフェッショナル感を重視したコーポレートデザイン。B2B向けページの制作ノウハウを学習します。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">B2B特化</span>
+                                <span class="feature-tag">実績訴求</span>
+                                <span class="feature-tag">資料請求</span>
+                            </div>
+                            <div class="card-target">法人営業向け</div>
+                        </div>
+                    </a>
+                    
+                    <a href="08_company_event/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🎉</span>
+                            <h3>会社イベント告知</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>企業内制作者向けの華やかなイベント告知ページ。参加意欲を高める工夫が満載で、社内イベントを成功に導く技術を学べます。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">イベント特化</span>
+                                <span class="feature-tag">参加促進</span>
+                                <span class="feature-tag">カウントダウン</span>
+                            </div>
+                            <div class="card-target">企業内制作向け</div>
+                        </div>
+                    </a>
+                    
+                    <a href="09_local_shop/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🍞</span>
+                            <h3>小規模店舗（パン屋）</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>実店舗経営者向けの温かみのあるデザイン。オンライン予約機能も実装し、O2O（Online to Offline）の仕組みを学習できます。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">店舗紹介</span>
+                                <span class="feature-tag">予約システム</span>
+                                <span class="feature-tag">O2O対応</span>
+                            </div>
+                            <div class="card-target">店舗経営者向け</div>
+                        </div>
+                    </a>
+                    
+                    <a href="10_startup_service/index.html" class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🚀</span>
+                            <h3>スタートアップサービス</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>新規事業立ち上げ者向けの洗練されたSaaSサービス紹介ページ。ベータ版募集の仕様で、投資家や顧客の関心を引く技術を学習します。</p>
+                            <div class="card-features">
+                                <span class="feature-tag">SaaS特化</span>
+                                <span class="feature-tag">ベータ募集</span>
+                                <span class="feature-tag">投資家訴求</span>
+                            </div>
+                            <div class="card-target">起業家向け</div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- CTAセクション -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>今すぐVibeコーディングを始めよう！</h2>
+                    <p class="cta-text">
+                        これらのサンプルページを30分で作れるようになる実践的な講座を提供しています。<br>
+                        あなたも今日からプロレベルのランディングページを制作できます。
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#" class="cta-button primary">講座に申し込む</a>
+                        <a href="#" class="cta-button">詳細を見る</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Vibeコーディング</h4>
+                    <p>実践的なWeb制作スキルを短時間で習得できる革新的なプログラミング講座です。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サンプルページ</h4>
+                    <p><a href="#samples">全10種類のサンプル</a></p>
+                    <p><a href="#features">制作技術詳細</a></p>
+                    <p><a href="#course">講座内容</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <p>Email: info@vibecoding.com</p>
+                    <p>Twitter: @VibeCoding</p>
+                    <p>YouTube: Vibeコーディング</p>
+                </div>
+                <div class="footer-section">
+                    <h4>技術情報</h4>
+                    <p><a href="#">HTML5 / CSS3</a></p>
+                    <p><a href="#">JavaScript ES6+</a></p>
+                    <p><a href="#">レスポンシブデザイン</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vibeコーディング講座. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // カードホバーエフェクト強化
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // スクロール時のアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // アニメーション対象要素の初期設定
+        document.querySelectorAll('.card, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

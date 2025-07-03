@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手作りパン工房 麦の香り | 毎朝焼きたての美味しいパンをお届け</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fefcf8;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="2.5" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="15" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .shop-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .shop-tagline {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hours-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+        }
+        
+        /* メインコンテンツ */
+        main {
+            padding: 80px 0;
+        }
+        
+        section {
+            margin-bottom: 80px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #8B4513;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #8B4513, #D2691E);
+        }
+        
+        /* おすすめ商品 */
+        .featured-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #f4e6d3, #e8d5b7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #8B4513;
+            position: relative;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #FF6347;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #8B4513;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #D2691E;
+            margin-bottom: 10px;
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* 商品カテゴリー */
+        .category-section {
+            background: #f8f6f0;
+            padding: 60px 0;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .category-card h4 {
+            color: #8B4513;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .category-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* 店舗情報 */
+        .shop-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .info-card h4 {
+            color: #8B4513;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .info-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            color: #D2691E;
+            font-weight: bold;
+        }
+        
+        /* オンライン注文 */
+        .order-section {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .order-section h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .order-section h2::after {
+            background: linear-gradient(to right, #fff, rgba(255,255,255,0.8));
+        }
+        
+        .order-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .order-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .benefit-item {
+            text-align: center;
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .benefit-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .order-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #8B4513;
+        }
+        
+        .product-select {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .product-option {
+            background: #f8f6f0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .product-option:hover, .product-option.selected {
+            background: #8B4513;
+            color: white;
+            border-color: #8B4513;
+        }
+        
+        .product-option input[type="checkbox"] {
+            display: none;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(139, 69, 19, 0.3);
+            width: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+        }
+        
+        /* フッター */
+        footer {
+            background: #4a2c17;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #D2691E;
+        }
+        
+        .footer-section p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-select {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-info {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="shop-logo">🍞</div>
+            <h1>手作りパン工房 麦の香り</h1>
+            <p class="shop-tagline">毎朝焼きたての美味しいパンをお届けします</p>
+            <div class="hours-badge">営業時間 7:00-18:00（定休日：月曜日）</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- おすすめ商品 -->
+            <section>
+                <h2>今日のおすすめ</h2>
+                <div class="featured-products">
+                    <div class="product-card">
+                        <div class="product-image">
+                            🥖
+                            <div class="product-badge">人気No.1</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>特製バゲット</h3>
+                            <div class="product-price">¥280</div>
+                            <p class="product-description">外はカリッと、中はふんわり。フランス産小麦粉を使用した本格的なバゲットです。</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            🍞
+                            <div class="product-badge">限定</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>国産小麦の食パン</h3>
+                            <div class="product-price">¥350</div>
+                            <p class="product-description">北海道産小麦100%使用。もちもちの食感と自然な甘みが自慢の食パンです。</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            🥐
+                        </div>
+                        <div class="product-info">
+                            <h3>バタークロワッサン</h3>
+                            <div class="product-price">¥200</div>
+                            <p class="product-description">発酵バターをたっぷり使った、サクサクで芳醇な香りのクロワッサンです。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 商品カテゴリー -->
+        <section class="category-section">
+            <div class="container">
+                <h2>商品カテゴリー</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <span class="category-icon">🍞</span>
+                        <h4>食パン・角食</h4>
+                        <p>毎日の食卓に欠かせない定番の食パンから、プレミアム食パンまで各種取り揃えています。</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">🥖</span>
+                        <h4>ハード系パン</h4>
+                        <p>バゲット、カンパーニュなど、本格的なフランスパンの味をお楽しみいただけます。</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">🥐</span>
+                        <h4>デニッシュ・菓子パン</h4>
+                        <p>クロワッサン、デニッシュペストリーなど、おやつにぴったりの甘いパンです。</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="category-icon">🥪</span>
+                        <h4>サンドイッチ</h4>
+                        <p>新鮮な野菜とハムやチキンを使った、ランチにぴったりのサンドイッチです。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- 店舗情報 -->
+            <section>
+                <h2>店舗案内</h2>
+                <div class="shop-info">
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h4>アクセス</h4>
+                        <p><span class="highlight">〒123-0001</span><br>
+                        東京都足立区梅島3-32-1<br>
+                        東武スカイツリーライン梅島駅徒歩3分<br>
+                        <span class="highlight">駐車場3台完備</span></p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🕐</div>
+                        <h4>営業時間</h4>
+                        <p><span class="highlight">平日</span> 7:00-18:00<br>
+                        <span class="highlight">土日祝</span> 7:00-17:00<br>
+                        <span class="highlight">定休日</span> 毎週月曜日<br>
+                        ※売り切れ次第終了</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📞</div>
+                        <h4>お問い合わせ</h4>
+                        <p><span class="highlight">TEL</span> 03-1234-5678<br>
+                        <span class="highlight">EMAIL</span> info@muginokaori.com<br>
+                        <span class="highlight">Instagram</span> @muginokaori_bakery</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- オンライン注文 -->
+        <section class="order-section">
+            <div class="container">
+                <h2>オンライン予約注文</h2>
+                <div class="order-content">
+                    <p>お電話またはオンラインで事前にご注文いただけます。<br>
+                    <strong>受け取り希望時刻の2時間前までにお申し込みください。</strong></p>
+                    
+                    <div class="order-benefits">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">⏰</span>
+                            <div class="benefit-text">待ち時間なし</div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🎯</span>
+                            <div class="benefit-text">確実にお取り置き</div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🚗</span>
+                            <div class="benefit-text">駐車場完備</div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">💰</span>
+                            <div class="benefit-text">現金・カード対応</div>
+                        </div>
+                    </div>
+                    
+                    <form class="order-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">お名前</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">電話番号</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pickup-date">受け取り日</label>
+                                <input type="date" id="pickup-date" name="pickup-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pickup-time">受け取り時刻</label>
+                                <select id="pickup-time" name="pickup-time" required>
+                                    <option value="">選択してください</option>
+                                    <option value="09:00">9:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>ご希望の商品（複数選択可）</label>
+                            <div class="product-select">
+                                <label class="product-option">
+                                    <input type="checkbox" name="products" value="baguette">
+                                    <div>特製バゲット<br>¥280</div>
+                                </label>
+                                <label class="product-option">
+                                    <input type="checkbox" name="products" value="shokupan">
+                                    <div>国産小麦食パン<br>¥350</div>
+                                </label>
+                                <label class="product-option">
+                                    <input type="checkbox" name="products" value="croissant">
+                                    <div>バタークロワッサン<br>¥200</div>
+                                </label>
+                                <label class="product-option">
+                                    <input type="checkbox" name="products" value="sandwich">
+                                    <div>サンドイッチ<br>¥400</div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">その他ご要望</label>
+                            <textarea id="message" name="message" rows="3" placeholder="個数や特別なご要望があればお聞かせください"></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">予約注文する</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <div class="footer-section">
+                    <h4>店舗情報</h4>
+                    <p>手作りパン工房 麦の香り<br>
+                    〒123-0001 東京都足立区梅島3-32-1<br>
+                    TEL: 03-1234-5678</p>
+                </div>
+                <div class="footer-section">
+                    <h4>営業時間</h4>
+                    <p>平日 7:00-18:00<br>
+                    土日祝 7:00-17:00<br>
+                    定休日: 月曜日</p>
+                </div>
+                <div class="footer-section">
+                    <h4>SNS</h4>
+                    <p>Instagram: @muginokaori_bakery<br>
+                    Facebook: 麦の香り<br>
+                    最新情報を発信中！</p>
+                </div>
+            </div>
+            <p>&copy; 2025 手作りパン工房 麦の香り. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 商品選択機能
+        document.querySelectorAll('.product-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+                this.classList.toggle('selected', checkbox.checked);
+            });
+        });
+
+        // フォーム送信
+        document.querySelector('.order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedProducts = Array.from(document.querySelectorAll('input[name="products"]:checked'))
+                .map(cb => cb.value);
+            
+            if (selectedProducts.length === 0) {
+                alert('商品を選択してください。');
+                return;
+            }
+            
+            alert('ご注文ありがとうございます。確認のお電話をさせていただきます。');
+        });
+
+        // 受け取り日の制限（明日以降）
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
+        const pickupDate = document.getElementById('pickup-date');
+        pickupDate.min = tomorrow.toISOString().split('T')[0];
+    </script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山田太郎 - Webライター | 読みやすい文章でビジネスをサポート</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヘッダー */
+        header {
+            background: #f8f9fa;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #007bff;
+        }
+        
+        /* ヒーロー */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* セクション共通 */
+        section {
+            padding: 80px 0;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        /* サービス */
+        .services {
+            background: #f8f9fa;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        /* 料金 */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .price-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .price-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+        
+        .price {
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        /* プロフィール */
+        .profile {
+            background: #f8f9fa;
+        }
+        
+        .profile-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+        
+        /* お問い合わせ */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background: #667eea;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            background: #764ba2;
+        }
+        
+        /* フッター */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#services">サービス</a></li>
+                <li><a href="#pricing">料金</a></li>
+                <li><a href="#profile">プロフィール</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>読みやすい文章で<br>ビジネスをサポート</h1>
+            <p>SEO対策からブログ記事まで、目的に合わせたライティングをご提供します</p>
+            <a href="#contact" class="cta-button">無料相談はこちら</a>
+        </div>
+    </section>
+
+    <!-- サービス -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>提供サービス</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">📝</div>
+                    <h3>ブログ記事作成</h3>
+                    <p>読者の興味を引く記事で、サイトの価値を高めます。SEO対策も考慮した構成で作成します。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>SEOライティング</h3>
+                    <p>検索エンジンに評価される記事を作成。上位表示を目指したコンテンツをお届けします。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>ビジネス文書作成</h3>
+                    <p>プレスリリース、企業紹介文など、ビジネスシーンで必要な文書を作成します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金 -->
+    <section id="pricing">
+        <div class="container">
+            <h2>料金プラン</h2>
+            <div class="pricing-table">
+                <div class="price-card">
+                    <h3>ライトプラン</h3>
+                    <p class="price">1文字 2円〜</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✓ 1,000文字以上</li>
+                        <li>✓ 基本的な構成</li>
+                        <li>✓ 1回の修正対応</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h3>スタンダードプラン</h3>
+                    <p class="price">1文字 3円〜</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✓ 2,000文字以上</li>
+                        <li>✓ SEO対策込み</li>
+                        <li>✓ 2回の修正対応</li>
+                        <li>✓ 画像選定込み</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h3>プレミアムプラン</h3>
+                    <p class="price">1文字 5円〜</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✓ 3,000文字以上</li>
+                        <li>✓ 詳細なリサーチ</li>
+                        <li>✓ 無制限修正対応</li>
+                        <li>✓ 優先対応</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロフィール -->
+    <section id="profile" class="profile">
+        <div class="container">
+            <h2>プロフィール</h2>
+            <div class="profile-content">
+                <div class="profile-image">👤</div>
+                <div class="profile-text">
+                    <h3>山田 太郎</h3>
+                    <p>大手メディアでの編集経験を活かし、2020年よりフリーランスのWebライターとして活動中。</p>
+                    <p>これまでに100社以上のクライアント様の記事作成をサポート。得意分野はビジネス、IT、ライフスタイル。</p>
+                    <p>「読者にとって価値のある情報を、わかりやすく伝える」をモットーに、日々執筆活動を行っています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section id="contact">
+        <div class="container">
+            <h2>お問い合わせ</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">お名前</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="project">ご依頼内容</label>
+                    <textarea id="project" name="project" placeholder="記事の種類、文字数、納期などをお聞かせください" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">送信する</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 山田太郎 - Webライター. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // フォーム送信（デモ用）
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('お問い合わせありがとうございます。24時間以内にご連絡いたします。');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【参加者募集】弊社設立10周年記念パーティー | 株式会社テックソリューションズ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #333;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="70" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: sparkle 20s linear infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .event-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.9);
+            color: #d4af37;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+        
+        .event-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 80px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        /* メインコンテンツ */
+        main {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        section {
+            margin-bottom: 80px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #d4af37, #f4d03f);
+        }
+        
+        /* イベント詳細 */
+        .event-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .info-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            color: #d4af37;
+            font-weight: bold;
+        }
+        
+        /* イベント内容 */
+        .event-program {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+        
+        .program-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 80px;
+            top: 50px;
+            width: 2px;
+            height: 100%;
+            background: #d4af37;
+        }
+        
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        
+        .timeline-time {
+            background: #d4af37;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            min-width: 120px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-left: 20px;
+            flex: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-content h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content p {
+            color: #666;
+            margin: 0;
+        }
+        
+        /* 特典・プレゼント */
+        .benefits {
+            text-align: center;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-item h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .benefit-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* 参加申し込み */
+        .registration-section {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .registration-section h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .registration-section h2::after {
+            background: linear-gradient(to right, #d4af37, #f4d03f);
+        }
+        
+        .registration-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .registration-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            color: #333;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        /* フッター */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .footer-contact {
+            margin-bottom: 20px;
+        }
+        
+        .footer-contact p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .timeline-item::before {
+                left: 60px;
+                top: 60px;
+            }
+            
+            .timeline-content {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="event-badge">✨ 特別記念イベント</div>
+            <h1>設立10周年記念パーティー</h1>
+            <p class="event-subtitle">感謝の気持ちを込めて、盛大にお祝いします</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number">285</span>
+                    <span class="countdown-label">日</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">12</span>
+                    <span class="countdown-label">時間</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">30</span>
+                    <span class="countdown-label">分</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- イベント詳細 -->
+            <section id="event-details">
+                <h2>イベント詳細</h2>
+                <div class="event-info">
+                    <div class="info-card">
+                        <div class="info-icon">📅</div>
+                        <h3>開催日時</h3>
+                        <p><span class="highlight">2025年10月10日（金）</span><br>
+                        18:00 開場<br>
+                        18:30 開始</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h3>会場</h3>
+                        <p><span class="highlight">グランドホテル東京</span><br>
+                        鳳凰の間（25階）<br>
+                        〒100-0001 東京都千代田区千代田1-1-1</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">👥</div>
+                        <h3>参加費</h3>
+                        <p><span class="highlight">無料</span><br>
+                        お食事・お飲み物付き<br>
+                        ※社員・関係者様限定</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- イベントプログラム -->
+        <section class="event-program">
+            <div class="container">
+                <h2>イベントプログラム</h2>
+                <div class="program-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">18:00</div>
+                        <div class="timeline-content">
+                            <h4>受付開始・ウェルカムドリンク</h4>
+                            <p>受付後、ウェルカムドリンクでおくつろぎください</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">18:30</div>
+                        <div class="timeline-content">
+                            <h4>開会挨拶・10周年記念映像上映</h4>
+                            <p>代表取締役による開会挨拶と、これまでの軌跡を振り返る記念映像</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">19:00</div>
+                        <div class="timeline-content">
+                            <h4>記念講演「次の10年に向けて」</h4>
+                            <p>業界の第一人者による特別講演</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">19:30</div>
+                        <div class="timeline-content">
+                            <h4>立食パーティー開始</h4>
+                            <p>シェフ厳選の料理とドリンクをお楽しみください</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">20:30</div>
+                        <div class="timeline-content">
+                            <h4>豪華景品が当たる抽選会</h4>
+                            <p>全員にプレゼント！さらに豪華景品も多数ご用意</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">21:00</div>
+                        <div class="timeline-content">
+                            <h4>閉会</h4>
+                            <p>記念品をお持ち帰りいただけます</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- 特典・プレゼント -->
+            <section class="benefits">
+                <h2>参加特典</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎁</div>
+                        <h4>記念品プレゼント</h4>
+                        <p>オリジナルグッズを全員にプレゼント</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🏆</div>
+                        <h4>豪華抽選会</h4>
+                        <p>家電製品や旅行券など豪華景品が当たる</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🍽️</div>
+                        <h4>特別料理</h4>
+                        <p>一流シェフによる特別料理をご堪能</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🤝</div>
+                        <h4>交流の場</h4>
+                        <p>普段会えない方々との貴重な交流機会</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 参加申し込み -->
+        <section class="registration-section">
+            <div class="container">
+                <h2>参加申し込み</h2>
+                <div class="registration-content">
+                    <p>参加をご希望の方は、下記フォームよりお申し込みください。<br>
+                    <strong>申し込み締切：2025年9月30日（火）</strong></p>
+                    <form class="registration-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">お名前</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="department">部署</label>
+                                <input type="text" id="department" name="department" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">メールアドレス</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">電話番号</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dietary">食事制限・アレルギー</label>
+                            <textarea id="dietary" name="dietary" rows="3" placeholder="特にない場合は「なし」とご記入ください"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">メッセージ（任意）</label>
+                            <textarea id="message" name="message" rows="3" placeholder="10周年に向けてのメッセージがあればお聞かせください"></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">参加申し込み</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-contact">
+                <p><strong>お問い合わせ</strong></p>
+                <p>株式会社テックソリューションズ 総務部</p>
+                <p>TEL: 03-1234-5678 | EMAIL: event@techsolutions.co.jp</p>
+            </div>
+            <p>&copy; 2025 株式会社テックソリューションズ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // カウントダウン機能（デモ用）
+        function updateCountdown() {
+            const eventDate = new Date('2025-10-10T18:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.querySelector('.countdown-item:nth-child(1) .countdown-number').textContent = days;
+            document.querySelector('.countdown-item:nth-child(2) .countdown-number').textContent = hours;
+            document.querySelector('.countdown-item:nth-child(3) .countdown-number').textContent = minutes;
+        }
+        
+        // 1分ごとに更新
+        setInterval(updateCountdown, 60000);
+        
+        // フォーム送信
+        document.querySelector('.registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('お申し込みありがとうございます。確認メールを送信いたします。');
+        });
+    </script>
+</body>
+</html>

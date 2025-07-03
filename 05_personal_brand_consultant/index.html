@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人ブランドコンサルタント | 佐藤一郎</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6f42c1; /* Purple */
+            --secondary-color: #20c997; /* Teal */
+            --text-color: #333;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e9ecef;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px 0;
+        }
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        h2 {
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        section {
+            background-color: var(--bg-white);
+            padding: 40px 0;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(111, 66, 193, 0.8), rgba(111, 66, 193, 0.8)), url('https://images.unsplash.com/photo-1552664730-d307ca8849d1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(32, 201, 151, 0.2);
+        }
+        .cta-button:hover {
+            background-color: #1aa07a;
+            transform: translateY(-3px);
+        }
+
+        /* About Me */
+        .about-me-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .about-me-content img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid var(--primary-color);
+        }
+        .about-me-content p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Consulting Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .menu-item {
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 5px solid var(--primary-color);
+            text-align: left;
+        }
+        .menu-item h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            text-align: left;
+        }
+        .menu-item .icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Why Choose Me */
+        .reason-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .reason-list li {
+            background-color: var(--bg-light);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        /* Process */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            text-align: center;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 0;
+        }
+        .step {
+            flex: 1;
+            padding: 1.5rem;
+            position: relative;
+            min-width: 200px;
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem auto;
+            border: 3px solid var(--bg-white);
+            z-index: 1;
+            position: relative;
+        }
+        .step h3 {
+            color: var(--text-color);
+            font-size: 1.4rem;
+        }
+
+        /* Testimonials */
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 15px;
+        }
+        .testimonial-card {
+            flex: 0 0 90%; /* Adjust width for responsiveness */
+            max-width: 450px;
+            margin: 0 10px;
+            background-color: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            scroll-snap-align: start;
+            text-align: left;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .testimonial-card .author {
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: right;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 0;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .menu-grid, .reason-list {
+                grid-template-columns: 1fr;
+            }
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            .process-steps::before {
+                display: none;
+            }
+            .step {
+                width: 100%;
+                text-align: center;
+            }
+            .step-number {
+                margin: 0 auto 1rem auto;
+            }
+            .testimonial-card {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <div class="container">
+                <h1>あなたの価値を最大化する</h1>
+                <p>個人ブランド構築の専門家、佐藤一郎があなたの成功をサポートします。</p>
+                <a href="#contact" class="cta-button">無料相談を予約する</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about-me">
+            <div class="container">
+                <h2>私について</h2>
+                <div class="about-me-content">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=180&h=180&fit=crop" alt="佐藤一郎">
+                    <h3>佐藤 一郎 (Ichiro Sato)</h3>
+                    <p>大手広告代理店で10年間、数々の企業のブランディング戦略に携わった後、独立。現在は個人事業主やフリーランス、中小企業の「個人ブランド」構築を専門にコンサルティングを行っています。<strong>累計500人以上のクライアントのブランド力を向上させ、ビジネスの成長に貢献。</strong>あなたの強みを最大限に引き出し、市場で輝く唯一無二の存在へと導きます。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="consulting-menu">
+            <div class="container">
+                <h2>コンサルティングメニュー</h2>
+                <p>あなたの目標に合わせた最適なプランをご提案します。</p>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="icon">💡</div>
+                        <h3>初回限定お試しコンサルティング</h3>
+                        <p>個人ブランディングの基礎や、現在の課題を明確にするための60分セッションです。</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="icon">📈</div>
+                        <h3>3ヶ月集中ブランディングコース</h3>
+                        <p>自己分析から戦略立案、情報発信まで、3ヶ月であなたの個人ブランドを確立します。</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="icon">📣</div>
+                        <h3>SNS活用・情報発信サポート</h3>
+                        <p>SNS運用戦略の策定からコンテンツ作成支援まで、効果的な情報発信をサポートします。</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="icon">✍️</div>
+                        <h3>パーソナルコンテンツ作成支援</h3>
+                        <p>ブログ記事、プロフィール文、プレゼン資料など、あなたの魅力を伝えるコンテンツ作成を支援します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-choose-me">
+            <div class="container">
+                <h2>佐藤一郎が選ばれる理由</h2>
+                <ul class="reason-list">
+                    <li><strong>実績と経験:</strong> 大手広告代理店での豊富な経験と、500人以上の個人・企業のブランド構築実績。</li>
+                    <li><strong>個別最適化:</strong> 一人ひとりの強みや目標に合わせた、オーダーメイドのコンサルティング。</li>
+                    <li><strong>実践的なアプローチ:</strong> 理論だけでなく、すぐに実践できる具体的なノウハウを提供。</li>
+                    <li><strong>継続的なサポート:</strong> コンサルティング後も、あなたの成長をサポートする体制。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <h2>コンサルティングの流れ</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">01</div>
+                        <h3>無料相談</h3>
+                        <p>まずはお気軽にご相談ください。あなたの現状と目標をヒアリングします。</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">02</div>
+                        <h3>プラン提案</h3>
+                        <p>ヒアリング内容に基づき、最適なコンサルティングプランをご提案します。</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">03</div>
+                        <h3>コンサルティング開始</h3>
+                        <p>目標達成に向けた具体的なアクションプランを実行していきます。</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">04</div>
+                        <h3>効果測定・改善</h3>
+                        <p>定期的に効果を測定し、必要に応じて戦略を改善していきます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials-section">
+            <div class="container">
+                <h2>お客様の声</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-card">
+                        <p>「自分の強みが分からず悩んでいましたが、佐藤さんのコンサルティングで明確になりました。自信を持って情報発信できるようになり、仕事の依頼も増えました！」</p>
+                        <div class="author">- フリーランスエンジニア K様</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>「SNSのフォロワーが伸び悩み、どうすれば良いか分からなかったのですが、佐藤さんのアドバイスで劇的に改善しました。本当に感謝しています。」</p>
+                        <div class="author">- Webライター M様</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>「漠然としたイメージしかなかった個人ブランドが、佐藤さんのサポートで具体的な形になりました。これからのビジネス展開が楽しみです。」</p>
+                        <div class="author">- 小規模事業者 S様</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>無料相談・お問い合わせ</h2>
+                <p>あなたの個人ブランドを確立し、ビジネスを加速させませんか？</p>
+                <a href="#" class="cta-button">今すぐ無料相談を予約する</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 佐藤一郎 個人ブランドコンサルタント. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
